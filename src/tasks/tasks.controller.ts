@@ -11,6 +11,7 @@ import {
 // import { Task } from './task-status.enum';
 import { TasksService } from './tasks.service';
 import { CreateTaskDto, GetTasksFilterDto, UpdateTaskStatusDto } from './dto';
+import { Task } from './task.entity';
 
 @Controller('tasks')
 export class TasksController {
@@ -23,6 +24,11 @@ export class TasksController {
   //   }
   //   return this.tasksService.getAllTasks();
   // }
+
+  @Get('/:id')
+  getTaskById(@Param('id') id: string): Promise<Task> {
+    return this.tasksService.getTaskById(id);
+  }
 
   // @Get('/:id')
   // getTaskById(@Param('id') id: string): Task {
